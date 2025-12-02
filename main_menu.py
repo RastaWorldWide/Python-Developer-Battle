@@ -1,4 +1,3 @@
-# main_menu.py
 import tkinter as tk
 from tkinter import messagebox
 import sys
@@ -81,7 +80,7 @@ class GameApp:
         self._launch_game("online_game", "🌍 Онлайн-режим", "720x560")
 
     def start_vs_bot(self):
-        messagebox.showinfo("🤖 Режим против бота", "Скоро будет доступен!")
+        self._launch_game("bot_game", "🤖 Режим против бота", "720x520")
 
     def _launch_game(self, module_name, title, geometry):
         self.root.withdraw()
@@ -242,7 +241,6 @@ class AboutScreen:
             "Версия: 0.7.0 (MVP)\n"
             "Автор: RastaWorldWide\n"
             "GitHub: github.com/RastaWorldWide/Python-Developer-Battle\n"
-            "Домен: prosoft-people.online"
         )
         tk.Label(
             self.frame, text=info,
@@ -263,11 +261,11 @@ if __name__ == "__main__":
         if not os.path.exists(name):
             with open(name, "w", encoding="utf-8") as f:
                 f.write(f'''
-import tkinter as tk
-class {name.replace(".py", "").title().replace("_", "")}App:
-    def __init__(self, root, settings):
-        tk.Label(root, text="{name[:-3].upper()} MODE\\n\\nНастройки: " + str(settings),
-                 font=("Consolas", 14), fg="white", bg="#1e1e1e", justify="center").pack(expand=True, pady=50)
+                import tkinter as tk
+                class {name.replace(".py", "").title().replace("_", "")}App:
+                    def __init__(self, root, settings):
+                        tk.Label(root, text="{name[:-3].upper()} MODE\\n\\nНастройки: " + str(settings),
+                                 font=("Consolas", 14), fg="white", bg="#1e1e1e", justify="center").pack(expand=True, pady=50)
                 ''')
 
     root = tk.Tk()
